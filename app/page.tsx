@@ -1,8 +1,9 @@
 'use client';
 
+import { Button } from '@/components/ui/button';
+import { encodePassphrase, generateRoomId, randomString } from '@/lib/client-utils';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React, { Suspense, useState } from 'react';
-import { encodePassphrase, generateRoomId, randomString } from '@/lib/client-utils';
 import styles from '../styles/Home.module.css';
 
 function Tabs(props: React.PropsWithChildren<{}>) {
@@ -18,7 +19,7 @@ function Tabs(props: React.PropsWithChildren<{}>) {
   let tabs = React.Children.map(props.children, (child, index) => {
     return (
       <button
-        className="lk-button"
+        className="lk-button mb-3 w-full"
         onClick={() => {
           if (onTabSelected) {
             onTabSelected(index);
@@ -34,7 +35,7 @@ function Tabs(props: React.PropsWithChildren<{}>) {
 
   return (
     <div className={styles.tabContainer}>
-      <div className={styles.tabSelect}>{tabs}</div>
+      <div className="flex w-full justify-center gap-2">{tabs}</div>
       {/* @ts-ignore */}
       {props.children[tabIndex]}
     </div>
@@ -53,11 +54,14 @@ function DemoMeetingTab(props: { label: string }) {
     }
   };
   return (
-    <div className={styles.tabContent}>
-      <p style={{ margin: 0 }}>Try LiveKit Meet for free with our live demo project.</p>
-      <button style={{ marginTop: '1rem' }} className="lk-button" onClick={startMeeting}>
-        Start Meeting
-      </button>
+    <div className="border border-slate-600 p-4 rounded-lg flex flex-col gap-4 w-full">
+      <p style={{ margin: 0 }}>Usando a demo do Livekit Cloud com Agente pré-treinado.</p>
+      <Button
+        className="w-full mt-4 p-4 rounded-lg bg-green-700 cursor-pointer hover:bg-green-900 transition-all ease-in-out duration-300"
+        onClick={startMeeting}
+      >
+        Iniciar Reunião
+      </Button>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <div style={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
           <input
@@ -66,11 +70,11 @@ function DemoMeetingTab(props: { label: string }) {
             checked={e2ee}
             onChange={(ev) => setE2ee(ev.target.checked)}
           ></input>
-          <label htmlFor="use-e2ee">Enable end-to-end encryption</label>
+          <label htmlFor="use-e2ee">Habilitar criptografia end-to-end</label>
         </div>
         {e2ee && (
           <div style={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
-            <label htmlFor="passphrase">Passphrase</label>
+            <label htmlFor="passphrase">Senha</label>
             <input
               id="passphrase"
               type="password"
@@ -104,9 +108,10 @@ function CustomConnectionTab(props: { label: string }) {
     }
   };
   return (
-    <form className={styles.tabContent} onSubmit={onSubmit}>
+    <form className="flex flex-col gap-4" onSubmit={onSubmit}>
       <p style={{ marginTop: 0 }}>
-        Connect LiveKit Meet with a custom server using LiveKit Cloud or LiveKit Server.
+        Conecte o LiveKit Meet com um servidor personalizado usando o LiveKit Cloud ou o LiveKit
+        Server.
       </p>
       <input
         id="serverUrl"
@@ -165,37 +170,23 @@ export default function Page() {
     <>
       <main className={styles.main} data-lk-theme="default">
         <div className="header">
-          <img src="/images/livekit-meet-home.svg" alt="LiveKit Meet" width="360" height="45" />
-          <h2>
-            Open source video conferencing app built on{' '}
-            <a href="https://github.com/livekit/components-js?ref=meet" rel="noopener">
-              LiveKit&nbsp;Components
-            </a>
-            ,{' '}
-            <a href="https://livekit.io/cloud?ref=meet" rel="noopener">
-              LiveKit&nbsp;Cloud
-            </a>{' '}
-            and Next.js.
+          <img
+            src="https://www.sofya.ai/images/sofya-logo.svg"
+            alt="LiveKit Meet"
+            width="360"
+            height="45"
+          />
+          <h2 className="text-slate-400 text-lg ">
+            Aplicacao de teste para agente de video do Sofya
           </h2>
         </div>
         <Suspense fallback="Loading">
           <Tabs>
             <DemoMeetingTab label="Demo" />
-            <CustomConnectionTab label="Custom" />
+            <CustomConnectionTab label="Customizada" />
           </Tabs>
         </Suspense>
       </main>
-      <footer data-lk-theme="default">
-        Hosted on{' '}
-        <a href="https://livekit.io/cloud?ref=meet" rel="noopener">
-          LiveKit Cloud
-        </a>
-        . Source code on{' '}
-        <a href="https://github.com/livekit/meet?ref=meet" rel="noopener">
-          GitHub
-        </a>
-        .
-      </footer>
     </>
   );
 }

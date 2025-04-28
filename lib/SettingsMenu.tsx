@@ -1,13 +1,11 @@
 'use client';
-import * as React from 'react';
-import { Track } from 'livekit-client';
 import {
-  useMaybeLayoutContext,
   MediaDeviceMenu,
-  TrackToggle,
-  useRoomContext,
   useIsRecording,
+  useMaybeLayoutContext,
+  useRoomContext,
 } from '@livekit/components-react';
+import * as React from 'react';
 import styles from '../styles/SettingsMenu.module.css';
 import { CameraSettings } from './CameraSettings';
 import { MicrophoneSettings } from './MicrophoneSettings';

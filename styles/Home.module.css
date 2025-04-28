@@ -8,14 +8,14 @@
   overflow: auto;
   flex-grow: 1;
 }
-
+/* 
 .tabContainer {
   width: 100%;
   max-width: 500px;
   padding-inline: 2rem;
-}
+} */
 
-.tabSelect {
+/* .tabSelect {
   display: flex;
   justify-content: stretch;
   gap: 0.125rem;
@@ -23,13 +23,13 @@
   margin: 0 auto 1.5rem;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 0.5rem;
-}
+} */
 
-.tabSelect > * {
+/* .tabSelect > * {
   width: 100%;
-}
+} */
 
-.tabContent {
+/* .tabContent {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -37,4 +37,4 @@
   padding: 1.5rem;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 0.5rem;
-}
+} */

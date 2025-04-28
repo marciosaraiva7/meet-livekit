@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   MediaDeviceMenu,
   TrackToggle,
@@ -7,8 +6,9 @@ import {
 } from '@livekit/components-react';
 import { BackgroundBlur, VirtualBackground } from '@livekit/track-processors';
 import { isLocalTrack, LocalTrackPublication, Track } from 'livekit-client';
+import React from 'react';
+import Nature from '../public/background-images/ali-kazal-KR3jzPYDGaA-unsplash.jpg';
 import Desk from '../public/background-images/samantha-gades-BlIhVfXbi9s-unsplash.jpg';
-import Nature from '../public/background-images/ali-kazal-tbw_KQE3Cbg-unsplash.jpg';
 
 // Background image paths
 const BACKGROUND_IMAGES = [
