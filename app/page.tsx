@@ -136,11 +136,11 @@ function CustomConnectionTab(props: { label: string }) {
             checked={e2ee}
             onChange={(ev) => setE2ee(ev.target.checked)}
           ></input>
-          <label htmlFor="use-e2ee">Enable end-to-end encryption</label>
+          <label htmlFor="use-e2ee">Habilitar criptografia end-to-end</label>
         </div>
         {e2ee && (
           <div style={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
-            <label htmlFor="passphrase">Passphrase</label>
+            <label htmlFor="passphrase">Senha</label>
             <input
               id="passphrase"
               type="password"
@@ -159,7 +159,7 @@ function CustomConnectionTab(props: { label: string }) {
         className="lk-button"
         type="submit"
       >
-        Connect
+        Conectar
       </button>
     </form>
   );
